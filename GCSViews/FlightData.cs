@@ -6336,59 +6336,59 @@ namespace MissionPlanner.GCSViews
         private void myButton6_Click(object sender, EventArgs e)
         {
             //GStreamer.recording = true;
-            rtsprecoding = true;
-            string winpath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            String[] spearator = { "Desktop" };
-            Int32 count = 2;
+            //rtsprecoding = true;
+            //string winpath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            //String[] spearator = { "Desktop" };
+            //Int32 count = 2;
 
-             //using the method
-            String[] strlist = winpath.Split(spearator, count,
-                   StringSplitOptions.RemoveEmptyEntries);
-            String[] spearator1 = { @"\", @"\\" };
-            Int32 count1 = 4;
-            String[] strlist2 = strlist[0].Split(spearator1, count1,
-                   StringSplitOptions.RemoveEmptyEntries);
-            winpath = strlist2[0] + "/" + strlist2[1] + "/" + strlist2[2] + "/Pictures/" + DateTime.Now.ToString().Replace(" ", "").Replace(":", "_").Replace("-", "_") + "_rec.avi";
+            // //using the method
+            //String[] strlist = winpath.Split(spearator, count,
+            //       StringSplitOptions.RemoveEmptyEntries);
+            //String[] spearator1 = { @"\", @"\\" };
+            //Int32 count1 = 4;
+            //String[] strlist2 = strlist[0].Split(spearator1, count1,
+            //       StringSplitOptions.RemoveEmptyEntries);
+            //winpath = strlist2[0] + "/" + strlist2[1] + "/" + strlist2[2] + "/Pictures/" + DateTime.Now.ToString().Replace(" ", "").Replace(":", "_").Replace("-", "_") + "_rec.avi";
 
-            string url1 = Settings.Instance["gstreamer_url"] != null
-             ? Settings.Instance["gstreamer_url"]
-             : @"videotestsrc ! video/x-raw, width=1280, height=720, framerate=30/1 ! videoconvert ! video/x-raw,format=BGRA ! appsink name=outsink";
+            //string url1 = Settings.Instance["gstreamer_url"] != null
+            // ? Settings.Instance["gstreamer_url"]
+            // : @"videotestsrc ! video/x-raw, width=1280, height=720, framerate=30/1 ! videoconvert ! video/x-raw,format=BGRA ! appsink name=outsink";
 
-            //if (DialogResult.OK == InputBox.Show("GStreamer url",
-            //    "Enter the source pipeline\nEnsure the final payload is ! videoconvert ! video/x-raw,format=BGRA ! appsink name=outsink",
-            //    ref url))
-            if (DialogResult.OK == InputBox.Show("RTSP url",
-               "Enter the RTSP url , Ex- rtsp://192.168.2.108:8554/live0",
-               ref url1))
-            {
-                var url = " rtspsrc location=" + url1 + "  ! application/x-rtp, media=video, encoding-name=H264  ! queue ! rtph264depay ! h264parse ! matroskamux ! filesink location=" + winpath;
+            ////if (DialogResult.OK == InputBox.Show("GStreamer url",
+            ////    "Enter the source pipeline\nEnsure the final payload is ! videoconvert ! video/x-raw,format=BGRA ! appsink name=outsink",
+            ////    ref url))
+            //if (DialogResult.OK == InputBox.Show("RTSP url",
+            //   "Enter the RTSP url , Ex- rtsp://192.168.2.108:8554/live0",
+            //   ref url1))
+            //{
+            //    var url = " rtspsrc location=" + url1 + "  ! application/x-rtp, media=video, encoding-name=H264  ! queue ! rtph264depay ! h264parse ! matroskamux ! filesink location=" + winpath;
 
 
 
-                GStreamer.gstlaunch = GStreamer.LookForGstreamer();
+            //    GStreamer.gstlaunch = GStreamer.LookForGstreamer();
 
-                if (!GStreamer.gstlaunchexists)
-                {
-                    GStreamerUI.DownloadGStreamer();
+            //    if (!GStreamer.gstlaunchexists)
+            //    {
+            //        GStreamerUI.DownloadGStreamer();
 
-                    if (!GStreamer.gstlaunchexists)
-                    {
-                        return;
-                    }
-                }
+            //        if (!GStreamer.gstlaunchexists)
+            //        {
+            //            return;
+            //        }
+            //    }
 
-                try
-                {
-                    recthred = GStreamer.RecordA(url);
-                }
-                catch (Exception ex)
-                {
-                    CustomMessageBox.Show(ex.ToString(), Strings.ERROR);
-                }
+            //    try
+            //    {
+            //        recthred = GStreamer.RecordA(url);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        CustomMessageBox.Show(ex.ToString(), Strings.ERROR);
+            //    }
 
-            }
-                // winpath.Replace(@"\", @"/");
-            
+            //}
+            // winpath.Replace(@"\", @"/");
+            recordHudToAVIToolStripMenuItem_Click(sender,e);
 
 
         }
@@ -6546,6 +6546,7 @@ namespace MissionPlanner.GCSViews
             rtsprecoding = false;
             GStreamer.record_run = false;
             //recthred.Abort();
+            stopRecordToolStripMenuItem_Click(sender, e );
         }
         private Boolean mybutton10up = true;
         private Boolean mybutton11up = true;

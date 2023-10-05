@@ -28,12 +28,13 @@ using static MAVLink;
 using static alglib;
 
 
+
 // Control written by Michael Oborne 2011
 // dual opengl and GDI+
 
 namespace MissionPlanner.Controls
 {
-    public class HUD2 : HUD
+    public class HUD2 : HUD 
     {
         public HUD2() : base()
         {
