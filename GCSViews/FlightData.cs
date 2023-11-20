@@ -6470,6 +6470,18 @@ namespace MissionPlanner.GCSViews
                         0, 13, trip2gimblemove[0], trip2gimblemove[1], 0, 0,
                        0);
         }
+        private void Trip2Modes(int modetype)
+        {
+            // observation 3
+            // stow 0
+            // tracking 7
+            MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent,
+                        (byte)MainV2.comPort.compidcurrent,
+                        MAVLink.MAV_CMD.DO_DIGICAM_CONTROL,
+                       0, modetype, 0, 0, 0, 0,
+                       0, false);
+        }
+        // TRIP2 OBSERVATION MODE
         private void observationmode()
         {
             MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent,
@@ -6478,6 +6490,7 @@ namespace MissionPlanner.GCSViews
                        0, 3, 0, 0, 0, 0,
                        0, false);
         }
+        
         private void gimbletrip2mavlin(float roll, float pitch)
         {
             MainV2.comPort.trip2doCommand((byte)MainV2.comPort.sysidcurrent,
@@ -7319,13 +7332,13 @@ namespace MissionPlanner.GCSViews
                         (byte)MainV2.comPort.compidcurrent,
                         MAVLink.MAV_CMD.DO_DIGICAM_CONTROL,
                         6, 0, 0, 1, 0, 0,
-                       0);
+                       0, false);
                 Thread.Sleep(500);
                 MainV2.comPort.trip2doCommand((byte)MainV2.comPort.sysidcurrent,
                             (byte)MainV2.comPort.compidcurrent,
                             MAVLink.MAV_CMD.DO_DIGICAM_CONTROL,
                             6, 0, 0, 0, 0, 0,
-                           0);
+                           0, false);
             }
 
 
@@ -7359,13 +7372,13 @@ namespace MissionPlanner.GCSViews
                            (byte)MainV2.comPort.compidcurrent,
                            MAVLink.MAV_CMD.DO_DIGICAM_CONTROL,
                            6, 0, 0, 2, 0, 0,
-                          0);
+                          0, false);
                     Thread.Sleep(500);
                     MainV2.comPort.trip2doCommand((byte)MainV2.comPort.sysidcurrent,
                                 (byte)MainV2.comPort.compidcurrent,
                                 MAVLink.MAV_CMD.DO_DIGICAM_CONTROL,
                                 6, 0, 0, 0, 0, 0,
-                               0);
+                               0, false);
                 }
             }
             catch
@@ -7444,6 +7457,21 @@ namespace MissionPlanner.GCSViews
                         MAVLink.MAV_CMD.DO_DIGICAM_CONTROL,
                         8, 0, 0, 0, 0, 0,
                        0);
+            }
+            else if (trip2mode == 5)
+            {
+                // observation
+                Trip2Modes(3);
+            }
+            else if (trip2mode == 6)
+            {
+                // stow
+                Trip2Modes(0);
+            }
+            else if(trip2mode == 7)
+            {
+                // tracking
+                Trip2Modes(7);
             }
         }
 
@@ -7580,7 +7608,25 @@ namespace MissionPlanner.GCSViews
         }
         private void focus_plus_Click(object sender, EventArgs e)
         {
+            
+        }
 
+        private void focusAreaButton_Click(object sender, EventArgs e)
+        {
+            var h = hud1.Height;
+            var w = hud1.Width;
+            MainV2.comPort.trip2doCommand(
+                (byte)MainV2.comPort.sysidcurrent,
+                (byte)MainV2.comPort.compidcurrent,
+                MAVLink.MAV_CMD.DO_DIGICAM_CONTROL,
+                
+                6,
+                hud1.center_roll,
+                hud1.center_pitch,
+                0,
+                0,
+                0,
+                0);
         }
     }
 }

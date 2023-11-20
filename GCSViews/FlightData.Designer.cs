@@ -75,6 +75,7 @@ namespace MissionPlanner.GCSViews
             this.BUT_setmode = new MissionPlanner.Controls.MyButton();
             this.tabCameracontrol = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.focusAreaButton = new MissionPlanner.Controls.MyButton();
             this.Joysticktoggle = new MissionPlanner.Controls.MyButton();
             this.digitalzoomIn = new MissionPlanner.Controls.MyButton();
             this.digitalzoomOut = new MissionPlanner.Controls.MyButton();
@@ -1152,6 +1153,7 @@ namespace MissionPlanner.GCSViews
             // tableLayoutPanel3
             // 
             resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
+            this.tableLayoutPanel3.Controls.Add(this.focusAreaButton, 2, 7);
             this.tableLayoutPanel3.Controls.Add(this.Joysticktoggle, 0, 8);
             this.tableLayoutPanel3.Controls.Add(this.digitalzoomIn, 0, 8);
             this.tableLayoutPanel3.Controls.Add(this.digitalzoomOut, 0, 8);
@@ -1177,6 +1179,18 @@ namespace MissionPlanner.GCSViews
             this.tableLayoutPanel3.Controls.Add(this.richTextBox1, 0, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel3_Paint);
+            // 
+            // focusAreaButton
+            // 
+            this.focusAreaButton.ColorMouseDown = System.Drawing.Color.Empty;
+            this.focusAreaButton.ColorMouseOver = System.Drawing.Color.Empty;
+            this.focusAreaButton.ColorNotEnabled = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.focusAreaButton, "focusAreaButton");
+            this.focusAreaButton.Name = "focusAreaButton";
+            this.focusAreaButton.TextColorNotEnabled = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(87)))), ((int)(((byte)(4)))));
+            this.toolTip1.SetToolTip(this.focusAreaButton, resources.GetString("focusAreaButton.ToolTip"));
+            this.focusAreaButton.UseVisualStyleBackColor = true;
+            this.focusAreaButton.Click += new System.EventHandler(this.focusAreaButton_Click);
             // 
             // Joysticktoggle
             // 
@@ -1237,7 +1251,10 @@ namespace MissionPlanner.GCSViews
             resources.GetString("comboBox2.Items1"),
             resources.GetString("comboBox2.Items2"),
             resources.GetString("comboBox2.Items3"),
-            resources.GetString("comboBox2.Items4")});
+            resources.GetString("comboBox2.Items4"),
+            resources.GetString("comboBox2.Items5"),
+            resources.GetString("comboBox2.Items6"),
+            resources.GetString("comboBox2.Items7")});
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
@@ -2963,7 +2980,7 @@ namespace MissionPlanner.GCSViews
             this.windDir1.BackColor = System.Drawing.Color.Transparent;
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Direction", this.bindingSource1, "wind_dir", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.windDir1.DataBindings.Add(new System.Windows.Forms.Binding("Speed", this.bindingSource1, "wind_vel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.windDir1.Direction = 360D;
+            this.windDir1.Direction = 180D;
             resources.ApplyResources(this.windDir1, "windDir1");
             this.windDir1.Name = "windDir1";
             this.windDir1.Speed = 0D;
@@ -3291,7 +3308,6 @@ namespace MissionPlanner.GCSViews
         private System.Windows.Forms.TableLayoutPanel tableMap;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.NumericUpDown Zoomlevel;
-        private Controls.MyLabel label1;
         private System.Windows.Forms.CheckBox CHK_autopan;
         public Controls.myGMAP gMapControl1;
         private ZedGraph.ZedGraphControl zg1;
@@ -3516,6 +3532,8 @@ namespace MissionPlanner.GCSViews
         private Controls.MyButton digitalzoomOut;
         private Controls.MyButton Joysticktoggle;
         private Controls.MyButton myButton17;
+        private Controls.MyButton focusAreaButton;
+        private Controls.MyLabel label1;
         //private TabPage tabPage1;
     }
 }

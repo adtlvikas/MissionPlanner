@@ -164,6 +164,8 @@ namespace MissionPlanner.Controls
         public bool HoldInvalidation = false;
 
         public bool Russian { get; set; }
+        public float center_roll = 0;
+        public float center_pitch = 0;
 
         private class character
         {
@@ -1230,6 +1232,7 @@ namespace MissionPlanner.Controls
             if (drawing && e.Button == MouseButtons.Left)
             {
                 this.rectangles.Add(currentRectangle);
+                CameraTrack((currentRectangle.Width/2)+currentRectangle.X,( (currentRectangle.Height /2)+currentRectangle.Y),Width,Height);
                 this.currentRectangle = Rectangle.Empty;
                 this.drawing = false;
                 this.Invalidate(); // Finalize the drawing
@@ -1249,20 +1252,20 @@ namespace MissionPlanner.Controls
             {
                 velocityYaw = 0.0;
             }
-
+            //velocityYaw = 0.0;
             // Pitch tracking
             double velocityPitch;
             if (Math.Abs(centerY - imageHeight / 2) > imageHeight * 0.01)
             {
                 velocityPitch = -1.0 * (centerY - imageHeight / 2) / 1250;
-                velocityPitch = Math.Max(-0.2, velocityPitch);
-                velocityPitch = Math.Min(0.2, velocityPitch);
+                velocityPitch = Math.Max(-0.1, velocityPitch);
+                velocityPitch = Math.Min(0.1, velocityPitch);
             }
             else
             {
                 velocityPitch = 0.0;
             }
-
+            //double velocityPitch = 0.0;
             Console.WriteLine($"velocity yaw:{velocityYaw}, pitch:{velocityPitch}");
 
             // Assuming 'cam' is your camera object with a 'SetGimble' method
@@ -1274,8 +1277,8 @@ namespace MissionPlanner.Controls
             // Assuming 'mavutil' is your MAVLink mavutil object
 
             // Roll and pitch values should be scaled from -1 to 1 to the desired range
-            double scaledRoll = roll * 1000; // Scale to -1000 to 1000
-            double scaledPitch = pitch * 1000; // Scale to -1000 to 1000
+            center_roll = (float)roll ; // Scale to -1000 to 1000
+            center_pitch = (float)pitch ; // Scale to -1000 to 1000
 
             // Send the MAVLink command
             //vehicle.SendMavCommandLong(
@@ -2540,7 +2543,10 @@ namespace MissionPlanner.Controls
                     float speed = _airspeed;
                     if (speed == 0)
                         speed = _groundspeed;
-
+                    //-----------change for speed---------
+                    if (_groundspeed > _airspeed)
+                        speed = _groundspeed;
+                    //-----------------------------------
                     float space = (scrollbg.Height) / viewrange;
                     float start = (long) (speed - viewrange / 2);
 

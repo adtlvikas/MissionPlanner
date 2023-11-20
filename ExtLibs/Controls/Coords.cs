@@ -78,7 +78,8 @@ namespace MissionPlanner.Controls
         {
             GEO,
             UTM,
-            MGRS
+            MGRS,
+            DMS
         }
 
         public Coords()
@@ -109,8 +110,8 @@ namespace MissionPlanner.Controls
                 {
                     e.Graphics.DrawString(Lat.ToString("0.0000000") + " " + Lng.ToString("0.0000000") + "   " + Alt.ToString("0.00") + AltUnit, this.Font, new SolidBrush(this.ForeColor), text, StringFormat.GenericDefault);
                 }
-            } 
-            else  if (System == CoordsSystems.UTM.ToString())
+            }
+            else if (System == CoordsSystems.UTM.ToString())
             {
                 try
                 {
@@ -119,7 +120,7 @@ namespace MissionPlanner.Controls
 
                     UTM utm = (UTM)point;
                     //utm.East.ToString("0.00") + " " + utm.North.ToString("0.00")
-                    string[] parts = utm.ToString().Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+                    string[] parts = utm.ToString().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
                     if (Vertical)
                     {
@@ -156,7 +157,43 @@ namespace MissionPlanner.Controls
                     }
                 }
                 catch { }
-            }  
+            }
+            else if (System == CoordsSystems.DMS.ToString())
+            {
+                try
+                {
+                    // --------------------------
+                    int latDegrees, latMinutes, longDegrees, longMinutes;
+                    double latSeconds, longSeconds;
+                    DecimalToDMS(Lng, out longDegrees, out longMinutes, out longSeconds);
+                    DecimalToDMS(Lat, out latDegrees, out latMinutes, out latSeconds);
+                    text = new PointF(CMB_coordsystem.Right + 3, 3);
+                    //RectangleF Recttext = new RectangleF(CMB_coordsystem.Right+3, 0, 300, 20);
+                    if (Vertical)
+                    {
+                        //---------lat long
+                        e.Graphics.DrawString(latDegrees + "° " + latMinutes + "' " + latSeconds.ToString("0.0000000") + "N \n" + longDegrees + "° " + longMinutes + "' " + longSeconds.ToString("0.0000000") + "E  \n" + Alt.ToString("0.00") + AltUnit, this.Font, new SolidBrush(this.ForeColor), text, StringFormat.GenericDefault);
+                        e.Graphics.DrawString(AltSource, this.Font, new SolidBrush(this.ForeColor),
+                            new PointF(CMB_coordsystem.Left, CMB_coordsystem.Bottom + 4), StringFormat.GenericDefault);
+                    }
+                    else
+                    {
+                        e.Graphics.DrawString(latDegrees + "° " + latMinutes + "' " + latSeconds.ToString("0.0000000") + "N " + longDegrees + "° " + longMinutes + "' " + longSeconds.ToString("0.0000000") + "E  " + Alt.ToString("0.00") + AltUnit, this.Font, new SolidBrush(this.ForeColor), text, StringFormat.GenericDefault);
+                        
+                    }
+                }
+                catch
+                {
+
+                }
+            }
+        }
+        static void DecimalToDMS(double coordinate, out int degrees, out int minutes, out double seconds)
+        {
+            degrees = (int)Math.Floor(coordinate);
+            double remainder = (coordinate - degrees) * 60;
+            minutes = (int)Math.Floor(remainder);
+            seconds = (remainder - minutes) * 60;
         }
 
         private void CMB_coordsystem_SelectedIndexChanged(object sender, EventArgs e)

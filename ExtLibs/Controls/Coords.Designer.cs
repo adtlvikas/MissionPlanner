@@ -33,7 +33,6 @@
             // 
             // CMB_coordsystem
             // 
-
             this.CMB_coordsystem.FormattingEnabled = true;
             this.CMB_coordsystem.Items.AddRange(new object[] {
             "GEO",
@@ -41,7 +40,7 @@
             "MGRS"});
             this.CMB_coordsystem.Location = new System.Drawing.Point(0, 2);
             this.CMB_coordsystem.Name = "CMB_coordsystem";
-            this.CMB_coordsystem.Size = new System.Drawing.Size(64, 24);
+            this.CMB_coordsystem.Size = new System.Drawing.Size(64, 21);
             this.CMB_coordsystem.TabIndex = 0;
             this.CMB_coordsystem.Text = "GEO";
             this.CMB_coordsystem.SelectedIndexChanged += new System.EventHandler(this.CMB_coordsystem_SelectedIndexChanged);
@@ -50,7 +49,7 @@
             // 
             this.Controls.Add(this.CMB_coordsystem);
             this.Name = "Coords";
-            this.Size = new System.Drawing.Size(200, 29);
+            this.Size = new System.Drawing.Size(500, 29);
             this.ResumeLayout(false);
 
         }
