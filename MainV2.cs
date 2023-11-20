@@ -48,7 +48,7 @@ namespace MissionPlanner
 
         public static menuicons displayicons; //do not initialize to allow update of custom icons
         public static string running_directory = Settings.GetRunningDirectory();
-        
+        //public static HUD myhud;
         public abstract class menuicons
         {
             public abstract Image fd { get; }
@@ -427,6 +427,8 @@ namespace MissionPlanner
             new ConcurrentDictionary<string, adsb.PointLatLngAltHdg>();
 
         public static string titlebar;
+        // flag for virtual boost speed
+        
 
         /// <summary>
         /// Comport name
@@ -4222,7 +4224,34 @@ namespace MissionPlanner
             {
                 return ProcessCmdKeyCallback(ref msg, keyData);
             }
+            if (keyData == (Keys.Control | Keys.B)) // for override connect
+            {
+                try
+                {
+                    //MainV2.comPort.Open(false);
+                    //CustomMessageBox.Show("Ctrl + B pressed!");
+                    //HUD myhud = new HUD();
+                    if (MenuFlightData.Text=="DATA")
+                    {
+                        MenuFlightData.Text = "DATA.";
 
+                        GCSViews.FlightData.myhud.boostx= 1.1f;
+                       
+                    }
+                    else if (MenuFlightData.Text == "DATA.")
+                    {
+                        MenuFlightData.Text = "DATA";
+                        GCSViews.FlightData.myhud.boostx = 1.0f;
+                    }
+                    
+                }
+                catch (Exception ex)
+                {
+                    CustomMessageBox.Show(ex.ToString());
+                }
+
+                return true;
+            }
             return base.ProcessCmdKey(ref msg, keyData);
         }
 

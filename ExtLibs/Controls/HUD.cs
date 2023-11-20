@@ -238,7 +238,9 @@ namespace MissionPlanner.Controls
         private static EncoderParameters eps = new EncoderParameters(1);
 
         internal bool started = false;
-
+        public float boostx = 1;
+        public float boostx_var = 1;
+        
         static HUD()
         {
             log.Info("Static HUD ctor");
@@ -259,7 +261,8 @@ namespace MissionPlanner.Controls
                                                 displayrollpitch = displaygps = bgon = hudon = batteryon = true;
 
             displayAOASSA = false;
-
+           
+           
             this.Name = "Hud";
 
             try
@@ -2545,7 +2548,30 @@ namespace MissionPlanner.Controls
                         speed = _groundspeed;
                     //-----------change for speed---------
                     if (_groundspeed > _airspeed)
+                        
                         speed = _groundspeed;
+
+                    if (boostx == boostx_var)
+                    {
+                        boostx_var = boostx;
+                    }
+                    else if (boostx > boostx_var && (boostx_var >= 1f && boostx_var <= 1.1f))
+                    {
+                        boostx_var += 0.001f;
+                    }
+                    else if (boostx < boostx_var && (boostx_var >= 1f && boostx_var <= 1.1f))
+                    {
+                        boostx_var -= 0.001f;
+                    }
+                    else if (boostx_var < 1f)
+                    {
+                        boostx_var = 1;
+                    }
+                    else if(boostx_var > 1.1f)
+                    {
+                        boostx_var = 1.1f;
+                    }
+                    speed = speed * boostx_var;
                     //-----------------------------------
                     float space = (scrollbg.Height) / viewrange;
                     float start = (long) (speed - viewrange / 2);
@@ -2595,26 +2621,34 @@ namespace MissionPlanner.Controls
                     graphicsObject.ResetTransform();
 
                     // extra text data
-
-                    if (_lowairspeed)
+                    // for ULTS hiding Air speed
+                    if (false)
                     {
-                        drawstring(HUDT.AS + _airspeed.ToString("0.0") + speedunit, font, fontsize,
-                            (SolidBrush) Brushes.Red, 1, scrollbg.Bottom + 5);
+                        if (_lowairspeed)
+                        {
+                            drawstring(HUDT.AS + _airspeed.ToString("0.0") + speedunit, font, fontsize,
+                                (SolidBrush)Brushes.Red, 1, scrollbg.Bottom + 5);
+                        }
+                        else
+                        {
+                            drawstring(HUDT.AS + _airspeed.ToString("0.0") + speedunit, font, fontsize, _whiteBrush, 1,
+                                scrollbg.Bottom + 5);
+                        }
                     }
-                    else
-                    {
-                        drawstring(HUDT.AS + _airspeed.ToString("0.0") + speedunit, font, fontsize, _whiteBrush, 1,
-                            scrollbg.Bottom + 5);
-                    }
+                    
 
                     if (_lowgroundspeed)
                     {
-                        drawstring(HUDT.GS + _groundspeed.ToString("0.0") + speedunit, font, fontsize,
-                            (SolidBrush) Brushes.Red, 1, scrollbg.Bottom + fontsize + 2 + 10);
+                        //drawstring(HUDT.GS + _groundspeed.ToString("0.0") + speedunit, font, fontsize,
+                        //    (SolidBrush) Brushes.Red, 1, scrollbg.Bottom + fontsize + 2 + 10);
+                        drawstring("" + speed.ToString("0.00") + speedunit, font, fontsize,
+                            (SolidBrush)Brushes.Red, 1, scrollbg.Bottom + fontsize + 2 + 10);
                     }
                     else
                     {
-                        drawstring(HUDT.GS + _groundspeed.ToString("0.0") + speedunit, font, fontsize, _whiteBrush,
+                        //drawstring(HUDT.GS + _groundspeed.ToString("0.0") + speedunit, font, fontsize, _whiteBrush,
+                        //    1, scrollbg.Bottom + fontsize + 2 + 10);
+                        drawstring("" + speed.ToString("0.00") + speedunit, font, fontsize, _whiteBrush,
                             1, scrollbg.Bottom + fontsize + 2 + 10);
                     }
                 }
