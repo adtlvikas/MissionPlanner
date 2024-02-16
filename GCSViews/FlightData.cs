@@ -37,6 +37,8 @@ using BrightIdeasSoftware;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static IronPython.Modules._ast;
 using IronPython.Runtime.Operations;
+using System.Net.Sockets;
+using System.Runtime.Serialization.Formatters.Binary;
 
 // written by michael oborne
 
@@ -223,12 +225,81 @@ namespace MissionPlanner.GCSViews
             {10, "<10m" },
             {11, "<3m" }
         };
+        private bool isDragging = false;
+        private void InitializeJoystick()
+        {
+            // Attach mouse events to the PictureBox
+            pictureBoxJoystick.MouseDown += PictureBoxJoystick_MouseDown;
+            pictureBoxJoystick.MouseMove += PictureBoxJoystick_MouseMove;
+            pictureBoxJoystick.MouseUp += PictureBoxJoystick_MouseUp;
 
+            // Set colorful circular background
+            SetCircularShape(pictureBoxJoystick);
+            pictureBoxJoystick.BackColor = Color.FromArgb(200, 255, 100, 100);
+
+            // Set colorful circular handle
+            SetCircularShape(pictureBoxHandle);
+            pictureBoxHandle.BackColor = Color.FromArgb(255, 50, 150, 255);
+        }
+
+        private void PictureBoxJoystick_MouseDown(object sender, MouseEventArgs e)
+        {
+            isDragging = true;
+        }
+
+        private void PictureBoxJoystick_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                MoveJoystick(e.X, e.Y);
+            }
+        }
+
+        private void PictureBoxJoystick_MouseUp(object sender, MouseEventArgs e)
+        {
+            isDragging = false;
+            ResetJoystickPosition();
+        }
+
+        private void MoveJoystick(int mouseX, int mouseY)
+        {
+            int containerWidth = pictureBoxJoystick.Width;
+            int containerHeight = pictureBoxJoystick.Height;
+
+            int x = mouseX - containerWidth / 2;
+            int y = mouseY - containerHeight / 2;
+
+            // Constrain the joystick handle within the PictureBox bounds
+            x = Math.Max(0, Math.Min(x, containerWidth - pictureBoxHandle.Width));
+            y = Math.Max(0, Math.Min(y, containerHeight - pictureBoxHandle.Height));
+
+            pictureBoxHandle.Location = new Point(x, y);
+        }
+
+        private void ResetJoystickPosition()
+        {
+            int containerWidth = pictureBoxJoystick.Width;
+            int containerHeight = pictureBoxJoystick.Height;
+
+            int x = containerWidth / 2 - pictureBoxHandle.Width / 2;
+            int y = containerHeight / 2 - pictureBoxHandle.Height / 2;
+
+            pictureBoxHandle.Location = new Point(x, y);
+        }
+
+        private void SetCircularShape(PictureBox pictureBox)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.AddEllipse(0, 0, pictureBox.Width, pictureBox.Height);
+            pictureBox.Region = new Region(path);
+        }
         public FlightData()
         {
+
             log.Info("Ctor Start");
 
             InitializeComponent();
+            InitializeJoystick();
             focus_minus.MouseUp += focus_minus_MouseUp;
             focus_minus.MouseDown += focus_minus_MouseDown;
             focus_plus.MouseUp += focus_plus_MouseUp;
@@ -707,7 +778,7 @@ namespace MissionPlanner.GCSViews
         public void loadTabControlActions()
         {
             //string tabs = Settings.Instance["tabcontrolactions"];
-            string tabs = "tabQuick;tabActions;tabCameracontrol;tabPagemessages;";
+            string tabs = "tabQuick;tabActions;tabCameracontrol;tabPagemessages;tabServo;tabTLogs;tabPagePreFlight;";
 
             if (String.IsNullOrEmpty(tabs) || TabListOriginal == null || TabListOriginal.Count == 0)
                 return;
@@ -2511,7 +2582,7 @@ namespace MissionPlanner.GCSViews
                 if (tabs == null)
                 {
                     saveTabControlActions();
-                    tabs = "tabQuick;tabActions;tabCameracontrol;tabPagemessages;";
+                    tabs = "tabQuick;tabActions;tabCameracontrol;tabPagemessages;tabServo;tabTLogs;tabPagePreFlight;";
                     //tabs = Settings.Instance["tabcontrolactions"];
                 }
 
@@ -6675,6 +6746,11 @@ namespace MissionPlanner.GCSViews
                         {
                             cammove[0] += speedtime;
                         }
+                        // MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent,
+                        // (byte)MainV2.comPort.compidcurrent,
+                        // MAVLink.MAV_CMD.DO_MOUNT_CONFIGURE,
+                        //1.0f, 0, 0, 0, 0, 0,
+                        //0, false);
                     }
                     else if (controltype_ == 1)
                     {
@@ -7011,13 +7087,19 @@ namespace MissionPlanner.GCSViews
                     {
 
 
-                        trackBarPitch.Value = -80;
-                        MainV2.comPort.setMountControl((float)trackBarPitch.Value * 100.0f, (float)trackBarRoll.Value * 100.0f,
-                            trackBarYaw.Value * 100.0f, false);
-                        System.Threading.Thread.Sleep(cammove[0]);
-                        trackBarPitch.Value = -10;
-                        MainV2.comPort.setMountControl((float)trackBarPitch.Value * 100.0f, (float)trackBarRoll.Value * 100.0f,
-                            trackBarYaw.Value * 100.0f, false);
+                        //trackBarPitch.Value = -80;
+                        //MainV2.comPort.setMountControl((float)trackBarPitch.Value * 100.0f, (float)trackBarRoll.Value * 100.0f,
+                        //    trackBarYaw.Value * 100.0f, false);
+                        //System.Threading.Thread.Sleep(cammove[0]);
+                        //trackBarPitch.Value = -10;
+                        //MainV2.comPort.setMountControl((float)trackBarPitch.Value * 100.0f, (float)trackBarRoll.Value * 100.0f,
+                        //    trackBarYaw.Value * 100.0f, false);
+                        MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent,
+                        (byte)MainV2.comPort.compidcurrent,
+                        MAVLink.MAV_CMD.DO_MOUNT_CONFIGURE,
+                        1.0f, 0, 0, 0, 0, 0,
+                        0, false);
+
                     }
                     else if (cammove[0] < 0)
                     {
@@ -7530,9 +7612,9 @@ namespace MissionPlanner.GCSViews
             }
         }
         private Boolean bulbstatus=false;
-        
+        private Boolean ledstatus = false;
 
-       
+
 
         private void myButton17_Click(object sender, EventArgs e)
         {
@@ -7627,6 +7709,102 @@ namespace MissionPlanner.GCSViews
                 0,
                 0,
                 0);
+        }
+
+        private void myButton18_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ledstatus)
+                {
+                    if (MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent, (byte)MainV2.comPort.compidcurrent, MAVLink.MAV_CMD.DO_SET_SERVO, 11, 1900, 0, 0,
+                   0, 0, 0))
+                    {
+                        myButton18.BackColor = Color.Red;
+                        myButton18.BGGradBot = Color.FromArgb(255, 128, 128);
+                        myButton18.BGGradTop = Color.Red;
+                        ledstatus = false;
+                    }
+                    else
+                    {
+                        CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
+                    }
+                }
+                else
+                {
+                    if (MainV2.comPort.doCommand((byte)MainV2.comPort.sysidcurrent, (byte)MainV2.comPort.compidcurrent, MAVLink.MAV_CMD.DO_SET_SERVO, 11, 1100, 0, 0,
+                   0, 0, 0))
+                    {
+                        ledstatus = true;
+                        myButton18.BackColor = Color.Green;
+                        myButton18.BGGradBot = Color.FromArgb(205, 226, 150);
+                        myButton18.BGGradTop = Color.Green;
+
+                    }
+                    else
+                    {
+                        CustomMessageBox.Show(Strings.CommandFailed, Strings.ERROR);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.Show(Strings.CommandFailed + ex.ToString(), Strings.ERROR);
+            }
+        }
+        
+        private void drawTrack_Click(object sender, EventArgs e)
+        {
+        
+            if(myhud.enable_draw_track)
+            {
+                drawTrack.Text = "Enable Track";
+            }
+            else
+            {
+                drawTrack.Text = "Disable Track";
+            }
+            myhud.enable_draw_track = !myhud.enable_draw_track;
+        }
+
+        private async void start_stopTrack_Click(object sender, EventArgs e)
+        {
+            
+            myhud.enable_draw_track = false;
+            drawTrack.Text = "Enable Track";
+            await myhud.socketdraw();
+            //-------------------
+
+        }
+
+        private void stopTrack_Click(object sender, EventArgs e)
+        {
+            string UDP_IP = "192.168.144.50";
+            int UDP_PORT = 15000;
+
+            UdpClient udpClient = new UdpClient();
+
+            try
+            {
+                // Prepare the data
+                myhud.udpdrawflag = false;
+                string message = "-1,-1";
+                byte[] data = System.Text.Encoding.UTF8.GetBytes(message);
+
+                // Send data to the specified IP and port
+                udpClient.Send(data, data.Length, UDP_IP, UDP_PORT);
+
+                Console.WriteLine("Message sent successfully.-->" + message);
+            }
+            catch (SocketException e1)
+            {
+                Console.WriteLine("SocketException: " + e1);
+            }
+            finally
+            {
+                udpClient.Close();
+            }
         }
     }
 }

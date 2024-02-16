@@ -37,8 +37,9 @@ namespace MissionPlanner.Utilities
                     continue;
 
                 //seq/cur/frame/mode
-                string[] items = line.Split(new[] { '\t', ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] items = line.Split(new[] { '\t',  ',' }, StringSplitOptions.RemoveEmptyEntries);
 
+                //CustomMessageBox.Show(items[12]);
                 if (items.Length <= 9)
                     continue;
 
@@ -63,11 +64,19 @@ namespace MissionPlanner.Utilities
                     temp.alt = (float)(double.Parse(items[10], CultureInfo.InvariantCulture));
                     temp.lat = (double.Parse(items[8], CultureInfo.InvariantCulture));
                     temp.lng = (double.Parse(items[9], CultureInfo.InvariantCulture));
+                    if (items.Length >= 13)
+                    {
+                        //CustomMessageBox.Show("Line invalid\n" + items[12]);
+                        temp.Lat_DMS = (items[12], CultureInfo.InvariantCulture).ToString();
+                        temp.Lon_DMS = (items[13], CultureInfo.InvariantCulture).ToString();
+                    }
+
+
 
                     temp.p2 = (float)(double.Parse(items[5], CultureInfo.InvariantCulture));
                     temp.p3 = (float)(double.Parse(items[6], CultureInfo.InvariantCulture));
                     temp.p4 = (float)(double.Parse(items[7], CultureInfo.InvariantCulture));
-
+                    
                     cmds.Add(temp);
 
                     wp_count++;

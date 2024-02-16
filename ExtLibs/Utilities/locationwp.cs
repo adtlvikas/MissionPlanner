@@ -17,7 +17,8 @@ namespace MissionPlanner.Utilities
             this.alt = (float)alt;
             this.id = id;
             this.frame = 3;
-
+            //this.Lat_DMS = lat_DMS;
+            //this.Lon_DMS = lon_DMS;
             return this;
         }
 

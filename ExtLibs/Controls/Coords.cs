@@ -165,6 +165,8 @@ namespace MissionPlanner.Controls
                     // --------------------------
                     int latDegrees, latMinutes, longDegrees, longMinutes;
                     double latSeconds, longSeconds;
+                    char latDirection = (Lat >= 0) ? 'N' : 'S'; // Determine North/South direction
+                    char lonDirection = (Lng >= 0) ? 'E' : 'W';
                     DecimalToDMS(Lng, out longDegrees, out longMinutes, out longSeconds);
                     DecimalToDMS(Lat, out latDegrees, out latMinutes, out latSeconds);
                     text = new PointF(CMB_coordsystem.Right + 3, 3);
@@ -172,13 +174,13 @@ namespace MissionPlanner.Controls
                     if (Vertical)
                     {
                         //---------lat long
-                        e.Graphics.DrawString(latDegrees + "° " + latMinutes + "' " + latSeconds.ToString("0.0000000") + "N \n" + longDegrees + "° " + longMinutes + "' " + longSeconds.ToString("0.0000000") + "E  \n" + Alt.ToString("0.00") + AltUnit, this.Font, new SolidBrush(this.ForeColor), text, StringFormat.GenericDefault);
+                        e.Graphics.DrawString(latDegrees + "° " + latMinutes + "' " + latSeconds.ToString("0.0000000") + latDirection + " \n" + longDegrees + "° " + longMinutes + "' " + longSeconds.ToString("0.0000000") + lonDirection+"  \n" + Alt.ToString("0.00") + AltUnit, this.Font, new SolidBrush(this.ForeColor), text, StringFormat.GenericDefault);
                         e.Graphics.DrawString(AltSource, this.Font, new SolidBrush(this.ForeColor),
                             new PointF(CMB_coordsystem.Left, CMB_coordsystem.Bottom + 4), StringFormat.GenericDefault);
                     }
                     else
                     {
-                        e.Graphics.DrawString(latDegrees + "° " + latMinutes + "' " + latSeconds.ToString("0.0000000") + "N " + longDegrees + "° " + longMinutes + "' " + longSeconds.ToString("0.0000000") + "E  " + Alt.ToString("0.00") + AltUnit, this.Font, new SolidBrush(this.ForeColor), text, StringFormat.GenericDefault);
+                        e.Graphics.DrawString(latDegrees + "° " + latMinutes + "' " + latSeconds.ToString("0.0000000") + latDirection+" " + longDegrees + "° " + longMinutes + "' " + longSeconds.ToString("0.0000000") + lonDirection+"  " + Alt.ToString("0.00") + AltUnit, this.Font, new SolidBrush(this.ForeColor), text, StringFormat.GenericDefault);
                         
                     }
                 }

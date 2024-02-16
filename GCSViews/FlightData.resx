@@ -576,6 +576,39 @@
   <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
+  <data name="myButton18.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="myButton18.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="myButton18.Location" type="System.Drawing.Point, System.Drawing">
+    <value>231, 153</value>
+  </data>
+  <data name="myButton18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 16</value>
+  </data>
+  <data name="myButton18.TabIndex" type="System.Int32, mscorlib">
+    <value>96</value>
+  </data>
+  <data name="myButton18.Text" xml:space="preserve">
+    <value>Led-N</value>
+  </data>
+  <data name="myButton18.ToolTip" xml:space="preserve">
+    <value>Send message to be saved in vehicle log</value>
+  </data>
+  <data name="&gt;&gt;myButton18.Name" xml:space="preserve">
+    <value>myButton18</value>
+  </data>
+  <data name="&gt;&gt;myButton18.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;myButton18.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;myButton18.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="myButton17.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -592,7 +625,7 @@
     <value>95</value>
   </data>
   <data name="myButton17.Text" xml:space="preserve">
-    <value>Bulb</value>
+    <value>Bulb-H</value>
   </data>
   <data name="myButton17.ToolTip" xml:space="preserve">
     <value>Send message to be saved in vehicle log</value>
@@ -607,7 +640,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;myButton17.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="guidedButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -640,7 +673,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;guidedButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="landButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -673,7 +706,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;landButton.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="hoverAlt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -706,7 +739,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;hoverAlt.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="myButton12.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -739,7 +772,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;myButton12.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="BUT_SendMSG.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -772,7 +805,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;BUT_SendMSG.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="BUT_abortland.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -805,7 +838,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;BUT_abortland.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="modifyandSetLoiterRad.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -835,13 +868,13 @@
     <value>modifyandSetLoiterRad</value>
   </data>
   <data name="&gt;&gt;modifyandSetLoiterRad.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ModifyandSet, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ModifyandSet, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;modifyandSetLoiterRad.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;modifyandSetLoiterRad.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="BUT_clear_track.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -874,7 +907,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;BUT_clear_track.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="CMB_action.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -901,7 +934,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;CMB_action.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="BUTactiondo.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -934,7 +967,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;BUTactiondo.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="BUT_resumemis.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -964,7 +997,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;BUT_resumemis.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="modifyandSetAlt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -994,13 +1027,13 @@
     <value>modifyandSetAlt</value>
   </data>
   <data name="&gt;&gt;modifyandSetAlt.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ModifyandSet, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ModifyandSet, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;modifyandSetAlt.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;modifyandSetAlt.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="modifyandSetSpeed.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1030,13 +1063,13 @@
     <value>modifyandSetSpeed</value>
   </data>
   <data name="&gt;&gt;modifyandSetSpeed.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ModifyandSet, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ModifyandSet, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;modifyandSetSpeed.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;modifyandSetSpeed.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="CMB_setwp.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1066,7 +1099,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;CMB_setwp.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="BUT_ARM.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1099,7 +1132,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;BUT_ARM.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="BUT_mountmode.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1132,7 +1165,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;BUT_mountmode.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="BUT_joystick.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1165,7 +1198,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;BUT_joystick.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="BUT_RAWSensor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1198,7 +1231,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;BUT_RAWSensor.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="BUT_Homealt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1231,7 +1264,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;BUT_Homealt.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
   </data>
   <data name="BUTrestartmission.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1264,7 +1297,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;BUTrestartmission.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>21</value>
   </data>
   <data name="CMB_mountmode.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1291,7 +1324,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;CMB_mountmode.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>22</value>
   </data>
   <data name="BUT_quickrtl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1324,7 +1357,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;BUT_quickrtl.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>23</value>
   </data>
   <data name="BUT_quickmanual.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1357,7 +1390,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;BUT_quickmanual.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>24</value>
   </data>
   <data name="BUT_setwp.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1390,7 +1423,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;BUT_setwp.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>25</value>
   </data>
   <data name="CMB_modes.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1417,7 +1450,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;CMB_modes.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>26</value>
   </data>
   <data name="BUT_quickauto.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1450,7 +1483,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;BUT_quickauto.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>27</value>
   </data>
   <data name="BUT_setmode.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1483,7 +1516,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;BUT_setmode.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>28</value>
   </data>
   <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -1510,7 +1543,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="myButton17" Row="5" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="guidedButton" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="landButton" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="hoverAlt" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="myButton12" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BUT_SendMSG" Row="4" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BUT_abortland" Row="4" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="modifyandSetLoiterRad" Row="2" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="BUT_clear_track" Row="3" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="CMB_action" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BUTactiondo" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BUT_resumemis" Row="4" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="modifyandSetAlt" Row="1" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="modifyandSetSpeed" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="CMB_setwp" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BUT_ARM" Row="3" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="BUT_mountmode" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BUT_joystick" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BUT_RAWSensor" Row="2" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="BUT_Homealt" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="BUTrestartmission" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="CMB_mountmode" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BUT_quickrtl" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BUT_quickmanual" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BUT_setwp" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="CMB_modes" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BUT_quickauto" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BUT_setmode" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20" /&gt;&lt;Rows Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="myButton18" Row="5" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="myButton17" Row="5" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="guidedButton" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="landButton" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="hoverAlt" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="myButton12" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BUT_SendMSG" Row="4" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BUT_abortland" Row="4" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="modifyandSetLoiterRad" Row="2" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="BUT_clear_track" Row="3" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="CMB_action" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BUTactiondo" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BUT_resumemis" Row="4" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="modifyandSetAlt" Row="1" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="modifyandSetSpeed" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="CMB_setwp" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BUT_ARM" Row="3" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="BUT_mountmode" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BUT_joystick" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BUT_RAWSensor" Row="2" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="BUT_Homealt" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="BUTrestartmission" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="CMB_mountmode" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BUT_quickrtl" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BUT_quickmanual" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BUT_setwp" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="CMB_modes" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BUT_quickauto" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="BUT_setmode" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20" /&gt;&lt;Rows Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tabActions.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 44</value>
@@ -1536,11 +1569,333 @@
   <data name="&gt;&gt;tabActions.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="pictureBoxHandle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBoxHandle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>58, 153</value>
+  </data>
+  <data name="pictureBoxHandle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="pictureBoxHandle.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxHandle.Name" xml:space="preserve">
+    <value>pictureBoxHandle</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxHandle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxHandle.Parent" xml:space="preserve">
+    <value>tabCameracontrol</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxHandle.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="pictureBoxJoystick.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBoxJoystick.InitialImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="pictureBoxJoystick.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 138</value>
+  </data>
+  <data name="pictureBoxJoystick.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 100</value>
+  </data>
+  <data name="pictureBoxJoystick.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxJoystick.Name" xml:space="preserve">
+    <value>pictureBoxJoystick</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxJoystick.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxJoystick.Parent" xml:space="preserve">
+    <value>tabCameracontrol</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxJoystick.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="tableLayoutPanel3.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="tableLayoutPanel3.ColumnCount" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="stopTrack.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="stopTrack.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="stopTrack.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 122</value>
+  </data>
+  <data name="stopTrack.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 14</value>
+  </data>
+  <data name="stopTrack.TabIndex" type="System.Int32, mscorlib">
+    <value>111</value>
+  </data>
+  <data name="stopTrack.Text" xml:space="preserve">
+    <value>Stop Track</value>
+  </data>
+  <data name="stopTrack.ToolTip" xml:space="preserve">
+    <value>Change Mode to RTL</value>
+  </data>
+  <data name="&gt;&gt;stopTrack.Name" xml:space="preserve">
+    <value>stopTrack</value>
+  </data>
+  <data name="&gt;&gt;stopTrack.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;stopTrack.Parent" xml:space="preserve">
+    <value>tableLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;stopTrack.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="drawTrack.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="drawTrack.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="drawTrack.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 122</value>
+  </data>
+  <data name="drawTrack.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 14</value>
+  </data>
+  <data name="drawTrack.TabIndex" type="System.Int32, mscorlib">
+    <value>110</value>
+  </data>
+  <data name="drawTrack.Text" xml:space="preserve">
+    <value>Enable Draw</value>
+  </data>
+  <data name="drawTrack.ToolTip" xml:space="preserve">
+    <value>Change Mode to RTL</value>
+  </data>
+  <data name="&gt;&gt;drawTrack.Name" xml:space="preserve">
+    <value>drawTrack</value>
+  </data>
+  <data name="&gt;&gt;drawTrack.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;drawTrack.Parent" xml:space="preserve">
+    <value>tableLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;drawTrack.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="start_stopTrack.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="start_stopTrack.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="start_stopTrack.Location" type="System.Drawing.Point, System.Drawing">
+    <value>209, 122</value>
+  </data>
+  <data name="start_stopTrack.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 14</value>
+  </data>
+  <data name="start_stopTrack.TabIndex" type="System.Int32, mscorlib">
+    <value>109</value>
+  </data>
+  <data name="start_stopTrack.Text" xml:space="preserve">
+    <value>Start Track</value>
+  </data>
+  <data name="start_stopTrack.ToolTip" xml:space="preserve">
+    <value>Change Mode to RTL</value>
+  </data>
+  <data name="&gt;&gt;start_stopTrack.Name" xml:space="preserve">
+    <value>start_stopTrack</value>
+  </data>
+  <data name="&gt;&gt;start_stopTrack.Type" xml:space="preserve">
+    <value>MissionPlanner.Controls.MyButton, MissionPlanner.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;start_stopTrack.Parent" xml:space="preserve">
+    <value>tableLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;start_stopTrack.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="focusAreaButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1549,7 +1904,7 @@
     <value>NoControl</value>
   </data>
   <data name="focusAreaButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>209, 198</value>
+    <value>209, 82</value>
   </data>
   <data name="focusAreaButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 14</value>
@@ -1573,7 +1928,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;focusAreaButton.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="Joysticktoggle.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1582,10 +1937,10 @@
     <value>NoControl</value>
   </data>
   <data name="Joysticktoggle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>106, 218</value>
+    <value>3, 102</value>
   </data>
   <data name="Joysticktoggle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 15</value>
+    <value>97, 14</value>
   </data>
   <data name="Joysticktoggle.TabIndex" type="System.Int32, mscorlib">
     <value>107</value>
@@ -1606,7 +1961,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;Joysticktoggle.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="digitalzoomIn.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1615,16 +1970,16 @@
     <value>NoControl</value>
   </data>
   <data name="digitalzoomIn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 218</value>
+    <value>209, 102</value>
   </data>
   <data name="digitalzoomIn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 15</value>
+    <value>88, 14</value>
   </data>
   <data name="digitalzoomIn.TabIndex" type="System.Int32, mscorlib">
     <value>106</value>
   </data>
   <data name="digitalzoomIn.Text" xml:space="preserve">
-    <value>D +</value>
+    <value>D+</value>
   </data>
   <data name="digitalzoomIn.ToolTip" xml:space="preserve">
     <value>Change Mode to RTL</value>
@@ -1639,7 +1994,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;digitalzoomIn.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="digitalzoomOut.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1648,10 +2003,10 @@
     <value>NoControl</value>
   </data>
   <data name="digitalzoomOut.Location" type="System.Drawing.Point, System.Drawing">
-    <value>209, 218</value>
+    <value>106, 102</value>
   </data>
   <data name="digitalzoomOut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 15</value>
+    <value>97, 14</value>
   </data>
   <data name="digitalzoomOut.TabIndex" type="System.Int32, mscorlib">
     <value>105</value>
@@ -1672,7 +2027,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;digitalzoomOut.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="Trip2setmode.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1681,7 +2036,7 @@
     <value>NoControl</value>
   </data>
   <data name="Trip2setmode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>106, 198</value>
+    <value>106, 82</value>
   </data>
   <data name="Trip2setmode.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 14</value>
@@ -1705,7 +2060,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;Trip2setmode.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="comboBox2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1738,7 +2093,7 @@
     <value>Tracking</value>
   </data>
   <data name="comboBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 198</value>
+    <value>3, 82</value>
   </data>
   <data name="comboBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 28</value>
@@ -1756,7 +2111,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;comboBox2.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="focus_plus.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1765,7 +2120,7 @@
     <value>NoControl</value>
   </data>
   <data name="focus_plus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 178</value>
+    <value>106, 62</value>
   </data>
   <data name="focus_plus.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 14</value>
@@ -1789,7 +2144,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;focus_plus.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="zomm2x.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1798,10 +2153,10 @@
     <value>NoControl</value>
   </data>
   <data name="zomm2x.Location" type="System.Drawing.Point, System.Drawing">
-    <value>106, 178</value>
+    <value>209, 62</value>
   </data>
   <data name="zomm2x.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 14</value>
+    <value>88, 14</value>
   </data>
   <data name="zomm2x.TabIndex" type="System.Int32, mscorlib">
     <value>100</value>
@@ -1822,7 +2177,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;zomm2x.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="focus_minus.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1831,10 +2186,10 @@
     <value>NoControl</value>
   </data>
   <data name="focus_minus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>209, 178</value>
+    <value>3, 62</value>
   </data>
   <data name="focus_minus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 14</value>
+    <value>97, 14</value>
   </data>
   <data name="focus_minus.TabIndex" type="System.Int32, mscorlib">
     <value>99</value>
@@ -1855,7 +2210,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;focus_minus.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>11</value>
   </data>
   <data name="Controltype.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1879,7 +2234,7 @@
     <value>Mea thermal</value>
   </data>
   <data name="Controltype.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 40</value>
+    <value>3, -17</value>
   </data>
   <data name="Controltype.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 28</value>
@@ -1897,7 +2252,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;Controltype.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="myButton16.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1906,7 +2261,7 @@
     <value>NoControl</value>
   </data>
   <data name="myButton16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 149</value>
+    <value>3, 33</value>
   </data>
   <data name="myButton16.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 23</value>
@@ -1930,7 +2285,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;myButton16.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>13</value>
   </data>
   <data name="myButton15.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1939,7 +2294,7 @@
     <value>NoControl</value>
   </data>
   <data name="myButton15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>209, 149</value>
+    <value>209, 33</value>
   </data>
   <data name="myButton15.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 23</value>
@@ -1963,7 +2318,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;myButton15.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>14</value>
   </data>
   <data name="myButton14.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1972,7 +2327,7 @@
     <value>NoControl</value>
   </data>
   <data name="myButton14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>209, 88</value>
+    <value>209, -28</value>
   </data>
   <data name="myButton14.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 26</value>
@@ -1996,7 +2351,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;myButton14.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>15</value>
   </data>
   <data name="myButton13.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -2005,7 +2360,7 @@
     <value>NoControl</value>
   </data>
   <data name="myButton13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>106, 120</value>
+    <value>106, 4</value>
   </data>
   <data name="myButton13.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 23</value>
@@ -2029,7 +2384,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;myButton13.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>16</value>
   </data>
   <data name="myButton11.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -2038,7 +2393,7 @@
     <value>NoControl</value>
   </data>
   <data name="myButton11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 120</value>
+    <value>3, 4</value>
   </data>
   <data name="myButton11.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 23</value>
@@ -2062,7 +2417,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;myButton11.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>17</value>
   </data>
   <data name="myButton10.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -2071,7 +2426,7 @@
     <value>NoControl</value>
   </data>
   <data name="myButton10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>106, 88</value>
+    <value>106, -28</value>
   </data>
   <data name="myButton10.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 26</value>
@@ -2095,7 +2450,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;myButton10.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>18</value>
   </data>
   <data name="myButton9.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -2104,7 +2459,7 @@
     <value>NoControl</value>
   </data>
   <data name="myButton9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>106, 149</value>
+    <value>106, 33</value>
   </data>
   <data name="myButton9.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 23</value>
@@ -2128,7 +2483,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;myButton9.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>19</value>
   </data>
   <data name="myButton8.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -2137,7 +2492,7 @@
     <value>NoControl</value>
   </data>
   <data name="myButton8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>209, 120</value>
+    <value>209, 4</value>
   </data>
   <data name="myButton8.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 23</value>
@@ -2161,7 +2516,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;myButton8.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>20</value>
   </data>
   <data name="myButton7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -2170,10 +2525,10 @@
     <value>NoControl</value>
   </data>
   <data name="myButton7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>209, 40</value>
+    <value>209, -17</value>
   </data>
   <data name="myButton7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 32</value>
+    <value>88, 1</value>
   </data>
   <data name="myButton7.TabIndex" type="System.Int32, mscorlib">
     <value>87</value>
@@ -2194,7 +2549,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;myButton7.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>21</value>
   </data>
   <data name="myButton6.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -2203,10 +2558,10 @@
     <value>NoControl</value>
   </data>
   <data name="myButton6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>106, 40</value>
+    <value>106, -17</value>
   </data>
   <data name="myButton6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 32</value>
+    <value>97, 1</value>
   </data>
   <data name="myButton6.TabIndex" type="System.Int32, mscorlib">
     <value>86</value>
@@ -2227,7 +2582,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;myButton6.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>22</value>
   </data>
   <data name="myButton5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -2239,7 +2594,7 @@
     <value>209, 3</value>
   </data>
   <data name="myButton5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 31</value>
+    <value>88, 1</value>
   </data>
   <data name="myButton5.TabIndex" type="System.Int32, mscorlib">
     <value>85</value>
@@ -2260,7 +2615,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;myButton5.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>23</value>
   </data>
   <data name="myButton4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -2272,7 +2627,7 @@
     <value>106, 3</value>
   </data>
   <data name="myButton4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 31</value>
+    <value>97, 1</value>
   </data>
   <data name="myButton4.TabIndex" type="System.Int32, mscorlib">
     <value>84</value>
@@ -2293,7 +2648,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;myButton4.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>24</value>
   </data>
   <data name="comboBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -2326,10 +2681,10 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;comboBox1.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>25</value>
   </data>
   <data name="richTextBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 88</value>
+    <value>3, -28</value>
   </data>
   <data name="richTextBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 26</value>
@@ -2350,16 +2705,16 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;richTextBox1.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>26</value>
   </data>
   <data name="tableLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
     <value>-5, 0</value>
   </data>
   <data name="tableLayoutPanel3.RowCount" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>300, 236</value>
+    <value>300, 132</value>
   </data>
   <data name="tableLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2374,10 +2729,10 @@
     <value>tabCameracontrol</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel3.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="tableLayoutPanel3.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="focusAreaButton" Row="7" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="Joysticktoggle" Row="8" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="digitalzoomIn" Row="8" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="digitalzoomOut" Row="8" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="Trip2setmode" Row="7" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="comboBox2" Row="7" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="focus_plus" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="zomm2x" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="focus_minus" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="Controltype" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="myButton16" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="myButton15" Row="5" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="myButton14" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="myButton13" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="myButton11" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="myButton10" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="myButton9" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="myButton8" Row="4" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="myButton7" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="myButton6" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="myButton5" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="myButton4" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="comboBox1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="richTextBox1" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Percent,50,Absolute,94" /&gt;&lt;Rows Styles="Percent,49.47368,Percent,50.52632,Absolute,10,Absolute,32,Absolute,29,Absolute,29,Absolute,20,Absolute,20,Absolute,20,Absolute,20,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="stopTrack" Row="9" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="drawTrack" Row="9" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="start_stopTrack" Row="9" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="focusAreaButton" Row="7" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="Joysticktoggle" Row="8" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="digitalzoomIn" Row="8" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="digitalzoomOut" Row="8" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="Trip2setmode" Row="7" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="comboBox2" Row="7" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="focus_plus" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="zomm2x" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="focus_minus" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="Controltype" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="myButton16" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="myButton15" Row="5" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="myButton14" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="myButton13" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="myButton11" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="myButton10" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="myButton9" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="myButton8" Row="4" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="myButton7" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="myButton6" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="myButton5" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="myButton4" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="comboBox1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="richTextBox1" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Percent,50,Absolute,94" /&gt;&lt;Rows Styles="Percent,49.47368,Percent,50.52632,Absolute,10,Absolute,32,Absolute,29,Absolute,29,Absolute,20,Absolute,20,Absolute,20,Absolute,20,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tabCameracontrol.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 44</value>
@@ -2593,7 +2948,7 @@
     <value>checkListControl1</value>
   </data>
   <data name="&gt;&gt;checkListControl1.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.PreFlight.CheckListControl, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.PreFlight.CheckListControl, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;checkListControl1.Parent" xml:space="preserve">
     <value>tabPagePreFlight</value>
@@ -4082,7 +4437,7 @@
     <value>servoOptions1</value>
   </data>
   <data name="&gt;&gt;servoOptions1.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions1.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4103,7 +4458,7 @@
     <value>servoOptions2</value>
   </data>
   <data name="&gt;&gt;servoOptions2.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions2.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4124,7 +4479,7 @@
     <value>servoOptions3</value>
   </data>
   <data name="&gt;&gt;servoOptions3.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions3.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4145,7 +4500,7 @@
     <value>servoOptions4</value>
   </data>
   <data name="&gt;&gt;servoOptions4.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions4.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4166,7 +4521,7 @@
     <value>servoOptions5</value>
   </data>
   <data name="&gt;&gt;servoOptions5.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions5.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4187,7 +4542,7 @@
     <value>servoOptions6</value>
   </data>
   <data name="&gt;&gt;servoOptions6.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions6.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4208,7 +4563,7 @@
     <value>servoOptions7</value>
   </data>
   <data name="&gt;&gt;servoOptions7.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions7.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4229,7 +4584,7 @@
     <value>servoOptions8</value>
   </data>
   <data name="&gt;&gt;servoOptions8.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions8.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4250,7 +4605,7 @@
     <value>servoOptions9</value>
   </data>
   <data name="&gt;&gt;servoOptions9.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions9.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4271,7 +4626,7 @@
     <value>servoOptions10</value>
   </data>
   <data name="&gt;&gt;servoOptions10.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions10.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4292,7 +4647,7 @@
     <value>servoOptions11</value>
   </data>
   <data name="&gt;&gt;servoOptions11.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions11.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4313,7 +4668,7 @@
     <value>servoOptions12</value>
   </data>
   <data name="&gt;&gt;servoOptions12.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.ServoOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.ServoOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;servoOptions12.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4334,7 +4689,7 @@
     <value>relayOptions1</value>
   </data>
   <data name="&gt;&gt;relayOptions1.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.RelayOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.RelayOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;relayOptions1.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4355,7 +4710,7 @@
     <value>relayOptions2</value>
   </data>
   <data name="&gt;&gt;relayOptions2.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.RelayOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.RelayOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;relayOptions2.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4376,7 +4731,7 @@
     <value>relayOptions3</value>
   </data>
   <data name="&gt;&gt;relayOptions3.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.RelayOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.RelayOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;relayOptions3.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4397,7 +4752,7 @@
     <value>relayOptions4</value>
   </data>
   <data name="&gt;&gt;relayOptions4.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.RelayOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.RelayOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;relayOptions4.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4418,7 +4773,7 @@
     <value>relayOptions5</value>
   </data>
   <data name="&gt;&gt;relayOptions5.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.RelayOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.RelayOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;relayOptions5.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4439,7 +4794,7 @@
     <value>relayOptions6</value>
   </data>
   <data name="&gt;&gt;relayOptions6.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.RelayOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.RelayOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;relayOptions6.Parent" xml:space="preserve">
     <value>flowLayoutPanelServos</value>
@@ -4514,7 +4869,7 @@
     <value>auxOptions1</value>
   </data>
   <data name="&gt;&gt;auxOptions1.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.AuxOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.AuxOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;auxOptions1.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
@@ -4535,7 +4890,7 @@
     <value>auxOptions2</value>
   </data>
   <data name="&gt;&gt;auxOptions2.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.AuxOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.AuxOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;auxOptions2.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
@@ -4556,7 +4911,7 @@
     <value>auxOptions3</value>
   </data>
   <data name="&gt;&gt;auxOptions3.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.AuxOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.AuxOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;auxOptions3.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
@@ -4577,7 +4932,7 @@
     <value>auxOptions4</value>
   </data>
   <data name="&gt;&gt;auxOptions4.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.AuxOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.AuxOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;auxOptions4.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
@@ -4598,7 +4953,7 @@
     <value>auxOptions5</value>
   </data>
   <data name="&gt;&gt;auxOptions5.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.AuxOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.AuxOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;auxOptions5.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
@@ -4619,7 +4974,7 @@
     <value>auxOptions6</value>
   </data>
   <data name="&gt;&gt;auxOptions6.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.AuxOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.AuxOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;auxOptions6.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
@@ -4640,7 +4995,7 @@
     <value>auxOptions7</value>
   </data>
   <data name="&gt;&gt;auxOptions7.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.AuxOptions, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.AuxOptions, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;auxOptions7.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
@@ -6305,7 +6660,7 @@
     <value>distanceBar1</value>
   </data>
   <data name="&gt;&gt;distanceBar1.Type" xml:space="preserve">
-    <value>MissionPlanner.Controls.DistanceBar, MissionPlanner, Version=1.3.8719.20218, Culture=neutral, PublicKeyToken=null</value>
+    <value>MissionPlanner.Controls.DistanceBar, FlaireSoftware, Version=1.3.8798.26204, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;distanceBar1.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>

@@ -26,6 +26,9 @@ using SkiaSharp.Views.Desktop;
 using SkiaSharp;
 using static MAVLink;
 using static alglib;
+using System.Net.Sockets;
+using System.Threading.Tasks;
+using System.Net;
 
 
 
@@ -119,7 +122,7 @@ namespace MissionPlanner.Controls
             this.Size = new System.Drawing.Size(466, 354);
             this.VSync = false;
             this.ResumeLayout(false);
-
+           
         }
     }
 
@@ -240,7 +243,8 @@ namespace MissionPlanner.Controls
         internal bool started = false;
         public float boostx = 1;
         public float boostx_var = 1;
-        
+        public bool enable_draw_track = false;
+
         static HUD()
         {
             log.Info("Static HUD ctor");
@@ -261,8 +265,8 @@ namespace MissionPlanner.Controls
                                                 displayrollpitch = displaygps = bgon = hudon = batteryon = true;
 
             displayAOASSA = false;
-           
-           
+
+            
             this.Name = "Hud";
 
             try
@@ -279,6 +283,7 @@ namespace MissionPlanner.Controls
 
             graphicsObject = this;
             graphicsObjectGDIP = new GdiGraphics(Graphics.FromImage(objBitmap));
+            //socketdraw();
         }
 
         private float _roll = 0;
@@ -1042,6 +1047,7 @@ namespace MissionPlanner.Controls
             {
                 OnPaint(new PaintEventArgs(gg, this.ClientRectangle));
             }
+            
         }
 
         DateTime lastinvalidate = DateTime.MinValue;
@@ -1153,7 +1159,7 @@ namespace MissionPlanner.Controls
                     log.Error("HUD opengl onload 3 ", ex);
                 }
             }
-
+           
             log.Info("OnLoad Done");
 
             started = true;
@@ -1189,12 +1195,30 @@ namespace MissionPlanner.Controls
                     prearmclick(this, null);
             }
         }
-
+        private Cursor dottedRectCursor;
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
+            if (enable_draw_track)
+            {
+                Cursor.Current = Cursors.Cross;
+                int center_x = e.X;
+                int center_y = e.Y;
+                int width = 50;
+                int height = 50;
 
-            if (ekfhitzone.IntersectsWith(new Rectangle(e.X, e.Y, 5, 5)))
+                // Calculate the coordinates of the rectangle
+                int left_x = center_x - width / 2;
+                int top_y = center_y - height / 2;
+                this.hoverRectangle = new Rectangle(left_x, top_y, height, width);
+                //this.strikerect_center=new List<int> { center_x, center_y };
+                this.Invalidate(); // Force a repaint
+                //int width = 100; // Define the width of the rectangle cursor
+                //int height = 100; // Define the height of the rectangle cursor
+                //dottedRectCursor = CreateDottedRectCursor(width, height);
+                //this.Cursor = dottedRectCursor;
+            }
+            else if (ekfhitzone.IntersectsWith(new Rectangle(e.X, e.Y, 5, 5)))
             {
                 Cursor.Current = Cursors.Hand;
             }
@@ -1208,25 +1232,113 @@ namespace MissionPlanner.Controls
             }
             else if (drawing)
             {
-                //endPoint = e.Location;
-                Cursor.Current = Cursors.Cross;
-                this.currentRectangle.Width = e.X - currentRectangle.Left;
-                this.currentRectangle.Height = e.Y - currentRectangle.Top;
-                this.Invalidate(); // Force a repaint
+                ////endPoint = e.Location;
+                //Cursor.Current = Cursors.Cross;
+                //this.currentRectangle.Width = e.X - currentRectangle.Left;
+                //this.currentRectangle.Height = e.Y - currentRectangle.Top;
+                //this.Invalidate(); // Force a repaint
             }
             else
             {
                 Cursor.Current = DefaultCursor;
             }
-        }
-        protected override void OnMouseDown(MouseEventArgs e)
-        {
-            //base.OnMouseDown(e);
-            if (e.Button == MouseButtons.Left)
+            if (enable_draw_track)
             {
 
-                this.currentRectangle = new Rectangle(e.Location, new Size());
-                this.drawing = true;
+            }
+        }
+        private Cursor CreateCustomCursor()
+        {
+            Bitmap cursorBitmap = new Bitmap(5, 5);
+
+            // Draw a red circle on the cursor bitmap
+            using (Graphics g = Graphics.FromImage(cursorBitmap))
+            {
+                g.FillEllipse(Brushes.Red, 0, 0, cursorBitmap.Width, cursorBitmap.Height);
+            }
+
+            // Create an icon from the bitmap
+            Icon icon = Icon.FromHandle(cursorBitmap.GetHicon());
+
+            // Create a cursor from the icon
+            Cursor customCursor = new Cursor(icon.Handle);
+
+            // Dispose of the icon to release resources
+            icon.Dispose();
+
+            return customCursor;
+        }
+        private Cursor CreateDottedRectCursor(int width, int height)
+        {
+            // Create a bitmap for the cursor
+            Bitmap cursorBitmap = new Bitmap(width, height);
+
+            // Set the pixels in the bitmap to create a dotted rectangle pattern
+            for (int y = 0; y < cursorBitmap.Height; y++)
+            {
+                for (int x = 0; x < cursorBitmap.Width; x++)
+                {
+                    if (x < 2 || y < 2 || x > cursorBitmap.Width - 3 || y > cursorBitmap.Height - 3)
+                    {
+                        if ((x + y) % 2 == 0) // Creating a dotted pattern for the rectangle border
+                        {
+                            cursorBitmap.SetPixel(x, y, Color.Black);
+                        }
+                        else
+                        {
+                            cursorBitmap.SetPixel(x, y, Color.Transparent);
+                        }
+                    }
+                    else
+                    {
+                        cursorBitmap.SetPixel(x, y, Color.Transparent);
+                    }
+                }
+            }
+
+            // Create an icon from the bitmap
+            Icon icon = Icon.FromHandle(cursorBitmap.GetHicon());
+
+            // Create a cursor from the icon
+            Cursor customCursor = new Cursor(icon.Handle);
+
+            // Dispose of the icon to release resources
+            icon.Dispose();
+            return customCursor;
+    }
+    
+    protected override void OnMouseDown(MouseEventArgs e)
+    {
+            //base.OnMouseDown(e);
+            //if (e.Button == MouseButtons.Left)
+            //{
+            //    this.currentRectangle = new Rectangle(e.Location, new Size());
+            //    this.drawing = true;
+            //}
+            string UDP_IP = "192.168.144.50";
+            int UDP_PORT = 15000;
+
+            UdpClient udpClient = new UdpClient();
+
+            try
+            {
+                // Prepare the data
+
+                string message = "" + Convert.ToDouble(e.X)/Width + "," + Convert.ToDouble(e.Y)/Height;
+                byte[] data = System.Text.Encoding.UTF8.GetBytes(message);
+
+                // Send data to the specified IP and port
+                udpClient.Send(data, data.Length, UDP_IP, UDP_PORT);
+
+                Console.WriteLine("Message sent successfully.-->"+message);
+            }
+            catch (SocketException e1)
+            {
+                Console.WriteLine("SocketException: " + e1);
+            }
+            finally
+            {
+                udpClient.Close();
             }
         }
         protected override void OnMouseUp(MouseEventArgs e)
@@ -1241,6 +1353,84 @@ namespace MissionPlanner.Controls
                 this.Invalidate(); // Finalize the drawing
             }
         }
+        public bool udpdrawflag = false;
+        public async Task socketdraw()
+        {
+            if(!udpdrawflag)
+            {
+                udpdrawflag = true;
+                string serverIp = "192.168.144.60"; // server ip for sending tracking points
+                int port = 15000;
+                IPEndPoint serverEndPoint = new IPEndPoint(IPAddress.Parse(serverIp), port);
+                UdpClient udpClient = new UdpClient(serverEndPoint);
+
+                try
+                {
+                    // No need to connect for UDP, just store the endpoint
+
+
+                    while (true)
+                    {
+                        // Reading from UDP is different from TCP, as UDP is connectionless
+                        UdpReceiveResult result = await udpClient.ReceiveAsync();
+                        byte[] buffer = result.Buffer;
+
+                        string receivedMessage = Encoding.UTF8.GetString(buffer);
+                        Console.WriteLine("Received message: " + receivedMessage);
+
+                        //--------------
+                        string[] parts = receivedMessage.Trim('[', ']').Split(',');
+                        //--------
+
+                        //-------
+
+                        List<float> intList = new List<float>();
+
+                        foreach (string part in parts)
+                        {
+                            float parsedfloat;
+                            if (float.TryParse(part, out parsedfloat))
+                            {
+                                intList.Add(parsedfloat);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Unable to parse: " + part);
+                            }
+                        }
+
+                        if (intList.Count > 0)
+                        {
+                            int width = 50;
+                            int height = 50;
+                            int x1 = (int)(intList[0] * Width);
+                            int y1 = (int)(intList[1] * Height);
+                            int x2 = x1 - width / 2;
+                            int y2 = y1 - height / 2;
+                            this.trackingRectangle = new Rectangle(
+                                x2, y2, height, width);
+                        }
+                        if (!udpdrawflag) {
+                            break;
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+
+                }
+                finally
+                {
+                    // Close the UDP client when done
+                    udpClient.Close();
+                }
+            }
+            
+
+
+        }
+
+
         public void CameraTrack(double centerX, double centerY, double imageWidth, double imageHeight)
         {
             // Yaw tracking
@@ -1318,6 +1508,9 @@ namespace MissionPlanner.Controls
         string otherthread = "";
         private List<Rectangle> rectangles;
         private Rectangle currentRectangle;
+        private Rectangle trackingRectangle;
+        private Rectangle hoverRectangle;
+        private List<int> strikerect_center;
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -1426,7 +1619,27 @@ namespace MissionPlanner.Controls
                 huddrawtime = 0;
             }
             Graphics g = e.Graphics;
+            if (enable_draw_track)
+            {
+                using (Pen pen = new Pen(Color.Blue, 3))
+                {
+                    pen.DashStyle = DashStyle.Dot;
+                    g.DrawRectangle(pen, hoverRectangle);
+                    //int dotRadius = 3;
+                    //int dotCenterX = strikerect_center[0];
+                    //int dotCenterY = strikerect_center[1];
 
+                    //// Create a Brush for filling the circular dot
+                    //Brush brush = Brushes.Red;
+                   
+                    //// Draw a circular dot at the center
+                    //g.FillEllipse(brush, dotCenterX, dotCenterY, 2 * dotRadius, 2 * dotRadius);
+                }
+                
+
+                // Dispose of objects
+                
+            }
 
 
             // Draw the current rectangle if it's being drawn
@@ -1436,6 +1649,14 @@ namespace MissionPlanner.Controls
                 using (Pen pen = new Pen(Color.Blue, 2))
                 {
                     g.DrawRectangle(pen, currentRectangle);
+                }
+            }
+            if (true)
+            {
+                //g.Clear(Color.White);
+                using (Pen pen = new Pen(Color.Blue, 2))
+                {
+                    g.DrawRectangle(pen, trackingRectangle);
                 }
             }
             lock (this)
@@ -2572,6 +2793,8 @@ namespace MissionPlanner.Controls
                         boostx_var = 1.1f;
                     }
                     speed = speed * boostx_var;
+                    _airspeed*= boostx_var;
+                    _groundspeed*= boostx_var;
                     //-----------------------------------
                     float space = (scrollbg.Height) / viewrange;
                     float start = (long) (speed - viewrange / 2);
@@ -2622,34 +2845,31 @@ namespace MissionPlanner.Controls
 
                     // extra text data
                     // for ULTS hiding Air speed
-                    if (false)
+                    if (_lowairspeed)
                     {
-                        if (_lowairspeed)
-                        {
-                            drawstring(HUDT.AS + _airspeed.ToString("0.0") + speedunit, font, fontsize,
-                                (SolidBrush)Brushes.Red, 1, scrollbg.Bottom + 5);
-                        }
-                        else
-                        {
-                            drawstring(HUDT.AS + _airspeed.ToString("0.0") + speedunit, font, fontsize, _whiteBrush, 1,
-                                scrollbg.Bottom + 5);
-                        }
-                    }
-                    
-
-                    if (_lowgroundspeed)
-                    {
-                        //drawstring(HUDT.GS + _groundspeed.ToString("0.0") + speedunit, font, fontsize,
-                        //    (SolidBrush) Brushes.Red, 1, scrollbg.Bottom + fontsize + 2 + 10);
-                        drawstring("" + speed.ToString("0.00") + speedunit, font, fontsize,
-                            (SolidBrush)Brushes.Red, 1, scrollbg.Bottom + fontsize + 2 + 10);
+                        drawstring(HUDT.AS + _airspeed.ToString("0.0") + speedunit, font, fontsize,
+                            (SolidBrush)Brushes.Red, 1, scrollbg.Bottom + 5);
                     }
                     else
                     {
-                        //drawstring(HUDT.GS + _groundspeed.ToString("0.0") + speedunit, font, fontsize, _whiteBrush,
-                        //    1, scrollbg.Bottom + fontsize + 2 + 10);
-                        drawstring("" + speed.ToString("0.00") + speedunit, font, fontsize, _whiteBrush,
+                        drawstring(HUDT.AS + _airspeed.ToString("0.0") + speedunit, font, fontsize, _whiteBrush, 1,
+                            scrollbg.Bottom + 5);
+                    }
+
+
+                    if (_lowgroundspeed)
+                    {
+                        drawstring(HUDT.GS + _groundspeed.ToString("0.0") + speedunit, font, fontsize,
+                            (SolidBrush)Brushes.Red, 1, scrollbg.Bottom + fontsize + 2 + 10);
+                        //drawstring("" + speed.ToString("0.00") + speedunit, font, fontsize,
+                        //    (SolidBrush)Brushes.Red, 1, scrollbg.Bottom + fontsize + 2 + 10);
+                    }
+                    else
+                    {
+                        drawstring(HUDT.GS + _groundspeed.ToString("0.0") + speedunit, font, fontsize, _whiteBrush,
                             1, scrollbg.Bottom + fontsize + 2 + 10);
+                        //drawstring("" + speed.ToString("0.00") + speedunit, font, fontsize, _whiteBrush,
+                        //    1, scrollbg.Bottom + fontsize + 2 + 10);
                     }
                 }
 
@@ -2808,7 +3028,7 @@ namespace MissionPlanner.Controls
                     drawstring(((int) _alt).ToString("0 ") + altunit, font, 10, (SolidBrush) Brushes.AliceBlue,
                         scrollbg.Left + 10, -9);
                     graphicsObject.ResetTransform();
-
+                    
                     // mode and wp dist and wp
                     if (_modechanged.AddSeconds(2) > datetime)
                     {
@@ -3184,7 +3404,7 @@ namespace MissionPlanner.Controls
                     statuslast = status;
                 }
 
-                if (message != null && message != "")
+                if (message != null && message != "" )
                 {
                     Brush brush;
                     if (messageSeverity <= MAVLink.MAV_SEVERITY.ERROR)
@@ -3197,9 +3417,13 @@ namespace MissionPlanner.Controls
                     var newfontsize = calcfontsize(message, font, fontsize + 10, (SolidBrush) brush, Width - 50 - 50);
 
                     var size = calcsize(message, font, newfontsize, (SolidBrush)Brushes.Red, Width - 50 - 50);
-
-                    drawstring(message, font, newfontsize, (SolidBrush) brush, size.Width / -2,
+                    //------------- restrict message for showing NoData warning
+                    if(!message.Contains("WARNING No Data for "))
+                    {
+                        drawstring(message, font, newfontsize, (SolidBrush)brush, size.Width / -2,
                         halfheight / 3);
+                    }
+                    
                 }
 
                 graphicsObject.ResetTransform();

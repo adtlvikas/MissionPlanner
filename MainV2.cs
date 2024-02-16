@@ -1048,6 +1048,7 @@ namespace MissionPlanner
                 }
 
                 if (Settings.Instance["MainMaximised"] != null)
+                if (Settings.Instance["MainMaximised"] != null)
                 {
                     this.WindowState =
                         (FormWindowState) Enum.Parse(typeof(FormWindowState), Settings.Instance["MainMaximised"]);
@@ -2916,7 +2917,8 @@ namespace MissionPlanner
                         {
                             if (MainV2.speechEngine.IsReady)
                             {
-                                MainV2.speechEngine.SpeakAsync(msg);
+                                // ----------stop for speaking no data
+                                //MainV2.speechEngine.SpeakAsync(msg);
                                 nodatawarning = DateTime.Now;
                             }
                         }

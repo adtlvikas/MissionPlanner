@@ -1,5 +1,6 @@
 ﻿using DotSpatial.Data;
 using DotSpatial.Projections;
+//using trop =DotSpatial.Topology;
 using GeoUtility.GeoSystem;
 using GeoUtility.GeoSystem.Base;
 using GMap.NET;
@@ -51,6 +52,12 @@ using Point = System.Drawing.Point;
 using Resources = MissionPlanner.Properties.Resources;
 using Newtonsoft.Json;
 using MissionPlanner.ArduPilot.Mavlink;
+using IronPython.Runtime.Operations;
+using static IronPython.Modules._ast;
+using Org.BouncyCastle.Bcpg.Sig;
+using SharpKml.Engine;
+using Xamarin.Essentials;
+using SkiaSharp.Views.WPF;
 
 namespace MissionPlanner.GCSViews
 {
@@ -1161,11 +1168,13 @@ namespace MissionPlanner.GCSViews
             // --------------------------
             int latDegrees, latMinutes, longDegrees, longMinutes;
             double latSeconds, longSeconds;
+            char latDirection = (lat >= 0) ? 'N' : 'S'; // Determine North/South direction
+            char lonDirection = (lng >= 0) ? 'E' : 'W';
             DecimalToDMS(lng, out longDegrees, out longMinutes, out longSeconds);
             if (Commands.Columns[Lon_DMS.Index].HeaderText.Equals("Lon (DMS)"))
             {
                 cell = Commands.Rows[selectedrow].Cells[Lon_DMS.Index] as DataGridViewTextBoxCell;
-                cell.Value = longDegrees+ "° " + longMinutes+ "' " + longSeconds.ToString("0.0000000") + "\"";
+                cell.Value = longDegrees+ "° " + longMinutes+ "' " + longSeconds.ToString("0.0000000") + "\" "+ lonDirection;
                 cell.DataGridView.EndEdit();
             }
             // --------------------------
@@ -1173,7 +1182,7 @@ namespace MissionPlanner.GCSViews
             if (Commands.Columns[Lat_DMS.Index].HeaderText.Equals("Lat (DMS)"))
             {
                 cell = Commands.Rows[selectedrow].Cells[Lat_DMS.Index] as DataGridViewTextBoxCell;
-                cell.Value = latDegrees+ "° " + latMinutes+ "' " + latSeconds.ToString("0.0000000") + "\"";
+                cell.Value = latDegrees+ "° " + latMinutes+ "' " + latSeconds.ToString("0.0000000") + "\" "+latDirection;
                 cell.DataGridView.EndEdit();
             }
             if (alt != -1 && alt != -2 && Commands.Columns[Alt.Index].HeaderText.Equals("Alt"))
@@ -1817,7 +1826,9 @@ namespace MissionPlanner.GCSViews
                     Commands.Rows.Insert(selectedrow + 1, 1);
                 }
             }
-
+            
+            Commands.Rows[selectedrow].Cells[Lat_DMS.Index].Value = "0° 0' 0.00\" S";
+            Commands.Rows[selectedrow].Cells[Lon_DMS.Index].Value = "0° 0' 0.00\" E";
             writeKML();
         }
 
@@ -2307,13 +2318,18 @@ namespace MissionPlanner.GCSViews
         }
         static double ParseDMS(string dms)
         {
-            string[] parts = dms.Split(new[] { '°', '\'', '\"' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] parts = dms.Split(new[] { '°', '\'', '\"', ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
             int degrees = int.Parse(parts[0]);
             int minutes = int.Parse(parts[1]);
             double seconds = double.Parse(parts[2]);
-
-            return DMSToDecimal(degrees, minutes, seconds);
+            char direction = parts[3][0];
+            var decimalDegrees= DMSToDecimal(degrees, minutes, seconds);
+            if (direction == 'S' || direction == 'W')
+            {
+                decimalDegrees *= -1;
+            }
+            return decimalDegrees;
         }
         public void Commands_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -2361,12 +2377,14 @@ namespace MissionPlanner.GCSViews
                     var lng = double.Parse(Commands.Rows[e.RowIndex].Cells[Lon.Index].Value.ToString());
                     int latDegrees, latMinutes, longDegrees, longMinutes;
                     double latSeconds, longSeconds;
+                    char latDirection = (lat >= 0) ? 'N' : 'S'; // Determine North/South direction
+                    char lonDirection = (lng >= 0) ? 'E' : 'W';
                     DecimalToDMS(lng, out longDegrees, out longMinutes, out longSeconds);
-                    Commands.Rows[e.RowIndex].Cells[Lon_DMS.Index].Value= longDegrees + "° " + longMinutes + "' " + longSeconds.ToString("0.0000000") + "\"";
+                    Commands.Rows[e.RowIndex].Cells[Lon_DMS.Index].Value= longDegrees + "° " + longMinutes + "' " + longSeconds.ToString("0.0000000") + "\" "+lonDirection;
                    
                     // --------------------------
                     DecimalToDMS(lat, out latDegrees, out latMinutes, out latSeconds);
-                    Commands.Rows[e.RowIndex].Cells[Lat_DMS.Index].Value= latDegrees + "° " + latMinutes + "' " + latSeconds.ToString("0.0000000") + "\"";
+                    Commands.Rows[e.RowIndex].Cells[Lat_DMS.Index].Value= latDegrees + "° " + latMinutes + "' " + latSeconds.ToString("0.0000000") + "\" "+latDirection;
                     
                     convertFromGeographic(lat, lng);
                 }
@@ -5335,8 +5353,32 @@ namespace MissionPlanner.GCSViews
                 cell.Value = temp.p3;
                 cell = Commands.Rows[i].Cells[Param4.Index] as DataGridViewTextBoxCell;
                 cell.Value = temp.p4;
-
+                var l = ",)";
+                var s = "(";
+                //cell = Commands.Rows[i].Cells[Lat_DMS.Index] as DataGridViewTextBoxCell;
+                //cell.Value = temp.Lat_DMS.Replace(l, "").Replace(s, "");
+                //cell = Commands.Rows[i].Cells[Lon_DMS.Index] as DataGridViewTextBoxCell;
+                //cell.Value = temp.Lon_DMS.Replace(l,"").Replace(s,"");
                 // convert to utm/other
+                int latDegrees, latMinutes, longDegrees, longMinutes;
+                double latSeconds, longSeconds;
+                char latDirection = (temp.lat >= 0) ? 'N' : 'S'; // Determine North/South direction
+                char lonDirection = (temp.lng >= 0) ? 'E' : 'W';
+                DecimalToDMS(temp.lng, out longDegrees, out longMinutes, out longSeconds);
+                if (Commands.Columns[Lon_DMS.Index].HeaderText.Equals("Lon (DMS)"))
+                {
+                    cell = Commands.Rows[selectedrow].Cells[Lon_DMS.Index] as DataGridViewTextBoxCell;
+                    cell.Value = longDegrees + "° " + longMinutes + "' " + longSeconds.ToString("0.0000000") + "\" "+lonDirection;
+                    cell.DataGridView.EndEdit();
+                }
+                // --------------------------
+                DecimalToDMS(temp.lat, out latDegrees, out latMinutes, out latSeconds);
+                if (Commands.Columns[Lat_DMS.Index].HeaderText.Equals("Lat (DMS)"))
+                {
+                    cell = Commands.Rows[selectedrow].Cells[Lat_DMS.Index] as DataGridViewTextBoxCell;
+                    cell.Value = latDegrees + "° " + latMinutes + "' " + latSeconds.ToString("0.0000000") + "\" "+latDirection;
+                    cell.DataGridView.EndEdit();
+                }
                 convertFromGeographic(temp.lat, temp.lng);
             }
 
@@ -5855,7 +5897,12 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
                             sw.Write("\t" +
                                      (double.Parse(Commands.Rows[a].Cells[Alt.Index].Value.ToString()) /
                                       CurrentState.multiplieralt).ToString("0.000000", new CultureInfo("en-US")));
+                            
                             sw.Write("\t" + 1);
+                            sw.Write("\t" +
+                                     Commands.Rows[a].Cells[Lat_DMS.Index].Value.ToString());
+                            sw.Write("\t" +
+                                     Commands.Rows[a].Cells[Lon_DMS.Index].Value.ToString());
                             sw.WriteLine("");
                         }
 
@@ -8067,6 +8114,237 @@ Column 1: Field type (RALLY is the only one at the moment -- may have RALLY_LAND
         private void GDAL_OnProgress(double percent, string message)
         {
             Loading.ShowLoading((percent).ToString("0.0%") + " " + message, this);
+        }
+        private void shptokml()
+        {
+            // Replace with the path to your shapefile
+            string shapefilePath = @"C:\Users\astyd\Downloads\shp_boudary\STATE_BOUNDARY.shp";
+            string kmlFilePath = @"C:\Users\astyd\Downloads\shp_boudary\output_file.kml";
+
+            IFeatureSet featureSet = FeatureSet.Open(shapefilePath);
+            featureSet.SaveAs(kmlFilePath, true);
+
+            Console.WriteLine("Shapefile converted to KML successfully!");
+        }
+        public void ConvertShapefileToKML(string shapefilePath, string kmlPath)
+        {
+            IFeatureSet fs = FeatureSet.Open(shapefilePath);
+
+            if (fs != null)
+            {
+                // Create a new FeatureSet for KML
+                IFeatureSet kmlFs = new FeatureSet(FeatureType.Polygon);
+
+                foreach (IFeature feature in fs.Features)
+                {
+                    // Convert feature geometries to KML
+                    IFeature kmlFeature = kmlFs.AddFeature(feature.Geometry);
+                    // Add attribute data to the KML feature as needed
+                }
+                kmlFs.Reproject(KnownCoordinateSystems.Geographic.World.WGS1984);
+                kmlFs.SaveAs(kmlPath, true);
+                // Save as KML
+                //kmlFs.SaveAs(kmlPath, true);
+            }
+        }
+        public void ConvertToKML(string shapeFilePath, string kmlFilePath)
+        {
+            try
+            {
+                IFeatureSet featureSet = FeatureSet.Open(shapeFilePath);
+
+                if (featureSet != null)
+                {
+                    using (StreamWriter sw = new StreamWriter(kmlFilePath))
+                    {
+                        sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+                        sw.WriteLine("<kml xmlns=\"http://www.opengis.net/kml/2.2\">");
+                        sw.WriteLine("<Document>");
+
+                        foreach (IFeature feature in featureSet.Features)
+                        {
+                            sw.WriteLine("<Placemark>");
+                            sw.WriteLine($"<name>{feature.DataRow[0].ToString()}</name>");
+                            sw.WriteLine("<Point>");
+
+                            dynamic point = feature.Geometry.Coordinates[0];
+                            sw.WriteLine($"<coordinates>{point.X},{point.Y}</coordinates>");
+
+                            sw.WriteLine("</Point>");
+                            sw.WriteLine("</Placemark>");
+                        }
+
+                        sw.WriteLine("</Document>");
+                        sw.WriteLine("</kml>");
+                    }
+
+                    Console.WriteLine($"Converted {shapeFilePath} to KML: {kmlFilePath}");
+                }
+                else
+                {
+                    Console.WriteLine("Failed to open the shapefile or unsupported format.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error converting {shapeFilePath} to KML: {ex.Message}");
+                Console.WriteLine($"Stack trace: {ex.StackTrace}");
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine($"Inner Exception: {ex.InnerException.Message}");
+                }
+            }
+        }
+        private void loadDSM_Click(object sender, EventArgs e)
+        {
+            string shapefilePath = @"C:\Users\astyd\Downloads\shp_boudary\STATE_BOUNDARY.shp";
+            string kmlFilePath = @"C:\Users\astyd\Downloads\shp_boudary\output_file1.kml";
+            //ConvertShapefileToKML(shapefilePath, kmlFilePath);
+            ConvertToKML(shapefilePath, kmlFilePath);
+            //shptokml();
+
+            //            using (OpenFileDialog fd = new OpenFileDialog())
+            //            {
+            //                fd.Filter =
+            //                    "All Supported|*.kml;*.kmz;*.dxf;*.gpkg|Google Earth KML|*.kml;*.kmz|AutoCad DXF|*.dxf|GeoPackage|*.gpkg";
+            //                DialogResult result = fd.ShowDialog();
+            //                string file = fd.FileName;
+            //                if (file != "")
+            //                {
+            //                    kmlpolygonsoverlay.Polygons.Clear();
+            //                    kmlpolygonsoverlay.Routes.Clear();
+
+            //                    FlightData.kmlpolygons.Routes.Clear();
+            //                    FlightData.kmlpolygons.Polygons.Clear();
+            //                    if (file.ToLower().EndsWith("gpkg"))
+            //                    {
+            //#if !LIB
+            //                        using (var ogr = OGR.Open(file))
+            //                        {
+            //                            ogr.NewPoint += pnt =>
+            //                            {
+            //                                var mark = new GMarkerGoogle(new PointLatLngAlt(pnt), GMarkerGoogleType.brown_small);
+            //                                FlightData.kmlpolygons.Markers.Add(mark);
+            //                                kmlpolygonsoverlay.Markers.Add(mark);
+            //                            };
+            //                            ogr.NewLineString += ls =>
+            //                            {
+            //                                var route =
+            //                                    new GMapRoute(ls.Select(a => new PointLatLngAlt(a.y, a.x, a.z).Point()), "")
+            //                                    {
+            //                                        IsHitTestVisible = false,
+            //                                        Stroke = new Pen(Color.Red)
+            //                                    };
+            //                                FlightData.kmlpolygons.Routes.Add(route);
+            //                                kmlpolygonsoverlay.Routes.Add(route);
+            //                            };
+            //                            ogr.NewPolygon += ls =>
+            //                            {
+            //                                var polygon =
+            //                                    new GMapPolygon(ls.Select(a => new PointLatLngAlt(a.y, a.x, a.z).Point()).ToList(),
+            //                                        "")
+            //                                    {
+            //                                        Fill = Brushes.Transparent,
+            //                                        IsHitTestVisible = false,
+            //                                        Stroke = new Pen(Color.Red)
+            //                                    };
+            //                                FlightData.kmlpolygons.Polygons.Add(polygon);
+            //                                kmlpolygonsoverlay.Polygons.Add(polygon);
+            //                            };
+
+            //                            ogr.Process();
+            //                        }
+            //#endif
+            //                    }
+            //                    else if (file.ToLower().EndsWith("dxf"))
+            //                    {
+            //                        string zone = "-99";
+            //                        InputBox.Show("Zone", "Please enter the UTM zone, or cancel to not change", ref zone);
+
+            //                        dxf dxf = new dxf();
+            //                        if (zone != "-99")
+            //                            dxf.Tag = zone;
+
+            //                        dxf.newLine += Dxf_newLine;
+            //                        dxf.newPolyLine += Dxf_newPolyLine;
+            //                        dxf.newLwPolyline += Dxf_newLwPolyline;
+            //                        dxf.newMLine += Dxf_newMLine;
+            //                        dxf.Read(file);
+            //                    }
+            //                    else
+            //                    {
+            //                        try
+            //                        {
+            //                            string kml = "";
+            //                            string tempdir = "";
+            //                            if (file.ToLower().EndsWith("kmz"))
+            //                            {
+            //                                ZipFile input = new ZipFile(file);
+
+            //                                tempdir = Path.GetTempPath() + Path.DirectorySeparatorChar + Path.GetRandomFileName();
+            //                                input.ExtractAll(tempdir, ExtractExistingFileAction.OverwriteSilently);
+
+            //                                string[] kmls = Directory.GetFiles(tempdir, "*.kml");
+
+            //                                if (kmls.Length > 0)
+            //                                {
+            //                                    file = kmls[0];
+
+            //                                    input.Dispose();
+            //                                }
+            //                                else
+            //                                {
+            //                                    input.Dispose();
+            //                                    return;
+            //                                }
+            //                            }
+
+            //                            var sr = new StreamReader(File.OpenRead(file));
+            //                            kml = sr.ReadToEnd();
+            //                            sr.Close();
+
+            //                            // cleanup after out
+            //                            if (tempdir != "")
+            //                                Directory.Delete(tempdir, true);
+
+            //                            kml = kml.Replace("<Snippet/>", "");
+
+            //                            var parser = new Parser();
+
+            //                            parser.ElementAdded += parser_ElementAdded;
+            //                            parser.ParseString(kml, false);
+
+            //                            if ((int)DialogResult.Yes ==
+            //                                CustomMessageBox.Show(Strings.Do_you_want_to_load_this_into_the_flight_data_screen,
+            //                                    Strings.Load_data,
+            //                                    MessageBoxButtons.YesNo))
+            //                            {
+            //                                foreach (var temp in kmlpolygonsoverlay.Polygons)
+            //                                {
+            //                                    FlightData.kmlpolygons.Polygons.Add(temp);
+            //                                }
+
+            //                                foreach (var temp in kmlpolygonsoverlay.Routes)
+            //                                {
+            //                                    FlightData.kmlpolygons.Routes.Add(temp);
+            //                                }
+            //                            }
+
+            //                            if (
+            //                                CustomMessageBox.Show(Strings.Zoom_To, Strings.Zoom_to_the_center_or_the_loaded_file,
+            //                                    MessageBoxButtons.YesNo) ==
+            //                                (int)DialogResult.Yes)
+            //                            {
+            //                                MainMap.SetZoomToFitRect(GetBoundingLayer(kmlpolygonsoverlay));
+            //                            }
+            //                        }
+            //                        catch (Exception ex)
+            //                        {
+            //                            CustomMessageBox.Show(Strings.Bad_KML_File + ex);
+            //                        }
+            //                    }
+            //                }
+            //            }
         }
     }
 
